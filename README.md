@@ -96,3 +96,6 @@ pcl_pub.publish(pcl2.create_cloud_xyz32(header, point_cloud[:,  :3]))
 
 
 ![image-20221201220038434](README.assets/image-20221201220038434.png)
+
+## 06 发布GPS消息
+
