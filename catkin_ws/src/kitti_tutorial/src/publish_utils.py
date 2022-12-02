@@ -2,7 +2,7 @@
 '''
 Author: zhanghao
 Date: 2022-12-01 18:20:23
-LastEditTime: 2022-12-02 14:35:35
+LastEditTime: 2022-12-02 14:57:16
 FilePath: /hao_auto_drive/catkin_ws/src/kitti_tutorial/src/publish_utils.py
 Description: 
 '''
@@ -85,7 +85,6 @@ def publish_ego_car(ego_car_pub):
     marker_array.markers.append(mesh_marker)
 
     ego_car_pub.publish(marker_array)
-
 
 def publish_imu(imu_pub,imu_data):
     imu = Imu()
