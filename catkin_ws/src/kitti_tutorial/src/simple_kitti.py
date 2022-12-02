@@ -2,7 +2,7 @@
 '''
 Author: zhanghao
 Date: 2022-12-01 18:30:37
-LastEditTime: 2022-12-01 21:55:21
+LastEditTime: 2022-12-02 14:26:57
 FilePath: /hao_auto_drive/catkin_ws/src/kitti_tutorial/src/simple_kitti.py
 Description: 
 '''
@@ -17,6 +17,7 @@ if __name__ == '__main__':
     pcl_pub = rospy.Publisher('kitti_point_cloud', PointCloud2,queue_size=10)
     ego_pub = rospy.Publisher('kitti_ego_car',MarkerArray,queue_size=10)
     imu_pub = rospy.Publisher('kitti_imu', Imu, queue_size=10)
+    gps_pub = rospy.Publisher('kitti_gps', NavSatFix,queue_size=10)
 
     bridge = CvBridge()
 
@@ -32,6 +33,8 @@ if __name__ == '__main__':
 
         imu_data = read_imu(os.path.join(DATA_PATH,'oxts/data/%010d.txt' % frame))
         publish_imu(imu_pub,imu_data)
+
+        publish_gps(gps_pub, imu_data)
 
         rospy.loginfo("published")
         rate.sleep()

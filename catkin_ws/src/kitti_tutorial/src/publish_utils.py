@@ -2,13 +2,13 @@
 '''
 Author: zhanghao
 Date: 2022-12-01 18:20:23
-LastEditTime: 2022-12-01 21:59:16
+LastEditTime: 2022-12-02 14:35:35
 FilePath: /hao_auto_drive/catkin_ws/src/kitti_tutorial/src/publish_utils.py
 Description: 
 '''
 import rospy
 from std_msgs.msg import Header
-from sensor_msgs.msg import Image, PointCloud2, Imu
+from sensor_msgs.msg import Image, PointCloud2, Imu, NavSatFix
 import sensor_msgs.point_cloud2 as pcl2
 from cv_bridge import CvBridge
 from visualization_msgs.msg import Marker, MarkerArray
@@ -62,7 +62,7 @@ def publish_ego_car(ego_car_pub):
     mesh_marker.lifetime = rospy.Duration()
     mesh_marker.type = Marker.MESH_RESOURCE
     
-    mesh_marker.mesh_resource = "package://kitti_tutorial/model/1987Camel.dae"
+    mesh_marker.mesh_resource = "package://kitti_tutorial/config/model/1987Camel.dae"
 
     mesh_marker.pose.position.x = 0.0
     mesh_marker.pose.position.y = 0.0
@@ -104,6 +104,16 @@ def publish_imu(imu_pub,imu_data):
 
     imu.angular_velocity.z = imu_data.wu
     imu_pub.publish(imu)
+
+def publish_gps(gps_pub, imu_data):
+    gps = NavSatFix()
+    gps.header.frame_id = FRAME_ID
+    gps.header.stamp = rospy.Time.now()
+    gps.latitude = imu_data.lat
+    gps.longitude = imu_data.lon
+    gps.altitude = imu_data.alt
+
+    gps_pub.publish(gps)
 
 
 

@@ -1,0 +1,8 @@
+<launch>
+    <!--启动kitti_tutorial中的 simple_kitti.py-->
+    <node pkg="kitti_tutorial" type="simple_kitti.py" name="simple_kitti">
+    </node>
+    <!--启动rviz-->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find kitti_tutorial)/config/image.rviz"/>
+</launch>
+
