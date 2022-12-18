@@ -2,12 +2,13 @@
 
  * @Author: zhanghao
  * @Date: 2022-12-01 13:19:07
- * @LastEditTime: 2022-12-01 13:23:01
+ * @LastEditTime: 2022-12-18 17:58:28
  * @FilePath: /hao_auto_drive/README.md
  * @Description: 
 -->
 # hao_auto_drive
 参考youtube自动驾驶系列视频
+## 00 2022-12-18 push & delete
 ## 01 介绍KITTI数据集
 见 https://github.com/haohaoalt/hao_datasets
 传感器：
